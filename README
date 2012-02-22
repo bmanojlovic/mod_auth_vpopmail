@@ -14,3 +14,6 @@ UseCanonicalName Off
 </VirtualHost>
 
 ---- snip ---
+
+Code in this repo is really rather old (from 2002) but should be usable without changes
+-rw-r--r--   1 steki users   340 Nov 20  2002 README
