@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Check for existance of user vpopmail returns error if there is no 
+# "vpopmail" user
+
+VPOP_USER=`grep vpopmail /etc/passwd|cut -d':' -f6`
+if [ -z $VPOP_USER ] ; then
+echo "BUUUUUUUU lamer :)"
+exit -1 ;
+else
+echo "OK user vpopmail found..."
+LIBS=`cat $VPOP_USER/etc/lib_deps`
+INCLUDES=`cat $VPOP_USER/etc/inc_deps`
+
+echo "s%@LIBS@%${LIBS}%g" > sed.script
+echo "s%@INCLUDES@%${INCLUDES}%g" >> sed.script
+echo "OK created sed.script..."
+sed -f sed.script Makefile.in > Makefile
+echo "OK created Makefile from Makefile.in..."
+echo "Now type \"make\" to create vpopmail module"
+fi

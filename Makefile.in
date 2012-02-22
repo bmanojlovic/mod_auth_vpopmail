@@ -1,0 +1,21 @@
+# # # # # # # # # # # # # # # # # # # # # 
+#   VpopMail Virtual Host Module        #
+# Map vpopmail users home to web as     #
+# misterx.somedomain.com to             #
+#  misterx@somedomain.com               #
+# # # # # # # # # # # # # # # # # # # # #
+
+INCLUDES=@INCLUDES@
+LIBS=@LIBS@
+CC= @apxs -c ${INCLUDES} ${LIBS}
+
+
+all:
+	${CC} mod_auth_vpopmail.c 
+	@apxs -i  -a mod_auth_vpopmail.so
+
+clean:
+	rm -f mod_auth_vpopmail.so mod_auth_vpopmail.o
+
+distclean: clean
+	rm -f Makefile sed.script *~

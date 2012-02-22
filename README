@@ -1,0 +1,16 @@
+Just put it in VirtualHost section  "VpopMailVirtualHost On"
+and UseCanonicalName Off
+
+example
+
+---- snip ---
+
+UseCanonicalName Off
+<VirtualHost *>
+    VpopMailVirtualHost On
+    ErrorLog /var/log/httpd/error_log
+    CustomLog /var/log/httpd/access_log combined
+    ServerAdmin webmaster@dummy-host.example.com
+</VirtualHost>
+
+---- snip ---
